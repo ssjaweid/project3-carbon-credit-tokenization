@@ -131,3 +131,40 @@ if st.button("Calculate Air Miles Carbon Footprint"):
         st.write(f"Carbon Footprint (Miles): {air_miles_carbon:.2f} kg CO2e")
     else:
         st.error("Invalid IATA codes. Please provide valid IATA codes")
+
+# Streamlit House Carbon Footprint Calculator
+
+st.title('House Energy Consumption Calculator')
+
+# Input fields
+
+household = st.number_input("Household Members", min_value=1, max_value=50)
+
+electric_usage = st.number_input("Electricity in KWh", min_value=0.001, max_value=float(1000000))
+
+gas_usage = st.number_input("Gas used in therms", min_value=0.001, max_value=float(1000000))
+
+heating_oil = st.number_input("Heating oil in litres", min_value=0.001, max_value=float(1000000))
+
+
+# Function to calculate CO2E value
+
+def carbon_footprint():
+    
+    electric_footprint = (electric_usage * 0.0006) / household
+
+    gas_footprint = (gas_usage * 0.0002) / household
+
+    oil_footprint = (heating_oil * 0.0025) / household
+    
+    total_footprint = electric_footprint + gas_footprint + oil_footprint
+
+    return total_footprint
+
+# add button
+if st.button("Calculate home carbon footprint"):
+  
+    
+  total_footprint = carbon_footprint()
+  st.text(f"Carbon Credits Used: {total_footprint:0.2f}")
+  
