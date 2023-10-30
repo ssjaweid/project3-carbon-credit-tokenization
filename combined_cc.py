@@ -168,3 +168,21 @@ if st.button("Calculate home carbon footprint"):
   total_footprint = carbon_footprint()
   st.text(f"Carbon Credits Used: {total_footprint:0.2f}")
   
+# Function to convert carbon credits to token value
+
+carbon_credit_val = st.number_input("Carbon Credit to Token", min_value=0.00, max_value=float(1000000))
+
+def cc_to_token():
+
+    token_cc = carbon_credit_val * 1000000
+
+    return token_cc
+
+if st.button("Convert carbon credits to token value"):
+
+    token_value = cc_to_token()
+    st.text(f"You can buy or sell: {token_value:0.2f} team 6 crypto!")
+    
+
+
+
