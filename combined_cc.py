@@ -174,14 +174,14 @@ carbon_credit_val = st.number_input("Carbon Credit to Token", min_value=0.00, ma
 
 def cc_to_token():
 
-    token_cc = carbon_credit_val * 1000000
+    token_cc = ((carbon_credit_val * 1000000) / 341080000)
 
     return token_cc
 
 if st.button("Convert carbon credits to token value"):
 
     token_value = cc_to_token()
-    st.text(f"You can buy or sell: {token_value:0.2f} team 6 crypto!")
+    st.text(f"You can buy: {token_value:0.5f} ethereum to offset your usage!")
     
 
 
